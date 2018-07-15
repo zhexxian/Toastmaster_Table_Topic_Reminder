@@ -4,10 +4,11 @@ A useful tool that emails me a random topic to practice impromptu speech
 
 ## Getting Started
 
-Clone the project repo, install Python 3.7, get your email credentials ready and you are all set!
+Clone the project repo, install Python 3.7, store your email credentials safely in encryptCredentials.py (in your local machine).
+
+Need to do pip install cryptography
 
 Currently supporting Outlook e-mails. For other mail servers you may need to modify the SMTP part of the code.
-
 
 ## Next Steps
 

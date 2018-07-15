@@ -1,10 +1,10 @@
 import smtplib
-from getpass import getpass
 from email.message import EmailMessage
 from email.utils import make_msgid
+from encryptCredentials import email_address,encrypted_password
 
 def composeEmail():
-    emailAddress = input("Enter email address: ")
+    emailAddress = email_address
 
     msg = EmailMessage()
 
@@ -36,15 +36,11 @@ def composeEmail():
 def sendEmail(emailAddress,msg):
     server = smtplib.SMTP('smtp-mail.outlook.com',587)
     server.starttls()
-    try:
-        password = getpass(prompt='Password: ', stream=None)
-    except Exception as error:
-        print('ERROR', error)
-    else:
-        server.login(emailAddress,password)
-        server.send_message(msg)
-        server.quit()
-        print("Reminder email send successfully.")
+    password = encrypted_password
+    server.login(emailAddress,password)
+    server.send_message(msg)
+    server.quit()
+    print("Reminder email send successfully.")
 
 if __name__ == "__main__":
     emailAddress,msg = composeEmail()
